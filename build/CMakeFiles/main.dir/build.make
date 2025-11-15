@@ -86,114 +86,17 @@ CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
-CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/projector_cpu_depthsort.cpp
-CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o -MF CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o.d -o CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/projector_cpu_depthsort.cpp
-
-CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/projector_cpu_depthsort.cpp > CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.i
-
-CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/projector_cpu_depthsort.cpp -o CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.s
-
-CMakeFiles/main.dir/src/renderer_gl41.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/renderer_gl41.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/renderer_gl41.cpp
-CMakeFiles/main.dir/src/renderer_gl41.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/renderer_gl41.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/renderer_gl41.cpp.o -MF CMakeFiles/main.dir/src/renderer_gl41.cpp.o.d -o CMakeFiles/main.dir/src/renderer_gl41.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/renderer_gl41.cpp
-
-CMakeFiles/main.dir/src/renderer_gl41.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/renderer_gl41.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/renderer_gl41.cpp > CMakeFiles/main.dir/src/renderer_gl41.cpp.i
-
-CMakeFiles/main.dir/src/renderer_gl41.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/renderer_gl41.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/renderer_gl41.cpp -o CMakeFiles/main.dir/src/renderer_gl41.cpp.s
-
-CMakeFiles/main.dir/src/orbit.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/orbit.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/orbit.cpp
-CMakeFiles/main.dir/src/orbit.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/orbit.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/orbit.cpp.o -MF CMakeFiles/main.dir/src/orbit.cpp.o.d -o CMakeFiles/main.dir/src/orbit.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/orbit.cpp
-
-CMakeFiles/main.dir/src/orbit.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/orbit.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/orbit.cpp > CMakeFiles/main.dir/src/orbit.cpp.i
-
-CMakeFiles/main.dir/src/orbit.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/orbit.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/orbit.cpp -o CMakeFiles/main.dir/src/orbit.cpp.s
-
-CMakeFiles/main.dir/src/ply_3dgs.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/ply_3dgs.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/ply_3dgs.cpp
-CMakeFiles/main.dir/src/ply_3dgs.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/ply_3dgs.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/ply_3dgs.cpp.o -MF CMakeFiles/main.dir/src/ply_3dgs.cpp.o.d -o CMakeFiles/main.dir/src/ply_3dgs.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/ply_3dgs.cpp
-
-CMakeFiles/main.dir/src/ply_3dgs.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/ply_3dgs.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/ply_3dgs.cpp > CMakeFiles/main.dir/src/ply_3dgs.cpp.i
-
-CMakeFiles/main.dir/src/ply_3dgs.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/ply_3dgs.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/ply_3dgs.cpp -o CMakeFiles/main.dir/src/ply_3dgs.cpp.s
-
-CMakeFiles/main.dir/src/meshgen.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/meshgen.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/meshgen.cpp
-CMakeFiles/main.dir/src/meshgen.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/meshgen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/meshgen.cpp.o -MF CMakeFiles/main.dir/src/meshgen.cpp.o.d -o CMakeFiles/main.dir/src/meshgen.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/meshgen.cpp
-
-CMakeFiles/main.dir/src/meshgen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/meshgen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/meshgen.cpp > CMakeFiles/main.dir/src/meshgen.cpp.i
-
-CMakeFiles/main.dir/src/meshgen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/meshgen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/meshgen.cpp -o CMakeFiles/main.dir/src/meshgen.cpp.s
-
-CMakeFiles/main.dir/src/prim.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/prim.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/prim.cpp
-CMakeFiles/main.dir/src/prim.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/prim.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/prim.cpp.o -MF CMakeFiles/main.dir/src/prim.cpp.o.d -o CMakeFiles/main.dir/src/prim.cpp.o -c /Users/hanbinftr55/Coding/oop_proj3/src/prim.cpp
-
-CMakeFiles/main.dir/src/prim.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/prim.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/hanbinftr55/Coding/oop_proj3/src/prim.cpp > CMakeFiles/main.dir/src/prim.cpp.i
-
-CMakeFiles/main.dir/src/prim.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/prim.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/hanbinftr55/Coding/oop_proj3/src/prim.cpp -o CMakeFiles/main.dir/src/prim.cpp.s
-
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/main.cpp.o" \
-"CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o" \
-"CMakeFiles/main.dir/src/renderer_gl41.cpp.o" \
-"CMakeFiles/main.dir/src/orbit.cpp.o" \
-"CMakeFiles/main.dir/src/ply_3dgs.cpp.o" \
-"CMakeFiles/main.dir/src/meshgen.cpp.o" \
-"CMakeFiles/main.dir/src/prim.cpp.o"
+"CMakeFiles/main.dir/src/main.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/main.cpp.o
-main: CMakeFiles/main.dir/src/projector_cpu_depthsort.cpp.o
-main: CMakeFiles/main.dir/src/renderer_gl41.cpp.o
-main: CMakeFiles/main.dir/src/orbit.cpp.o
-main: CMakeFiles/main.dir/src/ply_3dgs.cpp.o
-main: CMakeFiles/main.dir/src/meshgen.cpp.o
-main: CMakeFiles/main.dir/src/prim.cpp.o
 main: CMakeFiles/main.dir/build.make
-main: /opt/homebrew/lib/libglfw.3.4.dylib
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/hanbinftr55/Coding/oop_proj3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
