@@ -9,12 +9,17 @@
 class Object
 {
 public:
-    GLdouble m_mRotate[16];
+    GLdouble m_mRotate[16] = {
+        1, 0, 0, 0, 
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 0
+    };
     Vec3 center;
     Vec3 color;
     Vec3 velocity;
-    Vec3 accel;
     Vec3 size;
+    Vec3 accel;
     double mass;
 
     virtual ~Object() = default;
@@ -29,31 +34,10 @@ public:
         glPopMatrix();
     }
 
-    void setColor(double r, double g, double b) {
-        color = {r, g, b};
-    }
-    void setColor(Vec3 rgb) {
-        color = rgb;
-    }
-
-    void setCenter(Vec3 new_loc) {
-        center = new_loc;
-    }
-    void setCenter(double x, double y, double z) {
-        center.x = x; center.y = y; center.z = z;
-    }
-
-    void setSize(Vec3 new_size) {
-        size = new_size;
-    }
-    
-    void setVelocity(Vec3 new_velocity) {
-        velocity = new_velocity;
-    }
-
-    void acc() {
-        velocity = velocity + accel;
-    }
+    void setColor(Vec3 rgb) { color = rgb; }
+    void setCenter(Vec3 new_loc) { center = new_loc; }
+    void setSize(Vec3 new_size) { size = new_size; }
+    void setVelocity(Vec3 new_velocity) { velocity = new_velocity; }
 
     virtual bool hasIntersected(Object& obj) const = 0;
 

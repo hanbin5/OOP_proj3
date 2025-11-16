@@ -1,15 +1,16 @@
 #pragma once
 
+#include <algorithm>
+#include <list>
 #include <memory>
 #include <utility>
-#include <vector>
 
 #include "Object.cpp"
 #include "ObjectSpec.cpp"
 
 class ObjectList {
 private:
-    std::vector<std::unique_ptr<Object>> objects;
+    std::list<std::unique_ptr<Object>> objects;
 public:
     void push(std::unique_ptr<Object> obj) {
         objects.push_back(std::move(obj));
@@ -24,6 +25,9 @@ public:
 
     void reset() {
         objects.clear();
-        // If you want to clear memory >> objects = std::vector<std::unique_ptr<Object>>();
+    }
+
+    size_t size() const {
+        return objects.size();
     }
 };

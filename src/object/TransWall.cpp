@@ -4,17 +4,16 @@
 
 #include "Object.cpp"
 #include "ObjectSpec.cpp"
+#include "Sphere.cpp"
 
-class Cannon : public Object {
+class TransWall : public Object
+{
 public:
     GLfloat Verts[8][3];
 
-private:
-    Vec3 direction{0.0, 0.0, 1.0};
-
-public:
-
-    Cannon(ObjectSpec objectSpec) {
+public :
+    TransWall(ObjectSpec objectSpec)
+    {
         setColor(objectSpec.rgb);
         setCenter(objectSpec.center);
         setVerts(objectSpec.size);
@@ -63,26 +62,5 @@ public:
         return false;
     }
 
-    void hitBy(Object& obj) override {    
-    }
-
-    const Vec3& getDirection() const {
-        return direction;
-    }
-    void setDirection() {
-        // Forward (local +Z) orientation is stored in the third column
-        Vec3 forward{
-            m_mRotate[2 * 4 + 0],
-            m_mRotate[2 * 4 + 1],
-            m_mRotate[2 * 4 + 2]
-        };
-
-        const double length = std::sqrt(dot(forward, forward));
-        if (length > 1e-6) {
-            const double invLen = 1.0 / length;
-            direction = {forward.x * invLen, forward.y * invLen, forward.z * invLen};
-        } else {
-            direction = {0.0, 0.0, 1.0};
-        }
-    }
+    void hitBy(Object& obj) override {}
 };

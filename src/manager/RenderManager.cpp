@@ -3,6 +3,7 @@
 #include <GLUT/glut.h>
 
 #include "ObjectManager.cpp"
+#include "CameraManager.cpp"
 
 struct RenderCallbacks {
     void (*display)() = nullptr;
@@ -16,27 +17,8 @@ struct RenderCallbacks {
     void (*specialUp)(int, int, int) = nullptr;
 };
 
-struct CameraState {
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 10.0f;
-    float yaw = 0.0f;
-    float pitch = 0.0f;
-};
-
 class RenderManager {
-private:
-    CameraState camera;
-
 public:
-    void setCameraDepth(float depth) {
-        camera.z = depth;
-    }
-
-    void setCamera(const CameraState& newCamera) {
-        camera = newCamera;
-    }
-
     void applyDefaultGLState() {
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LEQUAL);
@@ -73,24 +55,27 @@ public:
         if (callbacks.specialUp) glutSpecialUpFunc(callbacks.specialUp);
     }
 
-    void drawAll(ObjectManager& objectManager) {
+    void drawAll(ObjectManager& objectManager, CameraManager& cameraManager) {
         glMatrixMode(GL_MODELVIEW);
         glPushMatrix();
         glLoadIdentity();
-        glRotatef(-camera.pitch, 1.0f, 0.0f, 0.0f);
-        glRotatef(-camera.yaw, 0.0f, 1.0f, 0.0f);
-        glTranslatef(-camera.x, -camera.y, -camera.z);
+
+        glRotatef(-cameraManager.getPitch(), 1.0f, 0.0f, 0.0f);
+        glRotatef(-cameraManager.getYaw(), 0.0f, 1.0f, 0.0f);
+        glTranslatef(-cameraManager.getX(), -cameraManager.getY(), -cameraManager.getZ());
 
         for (const auto& objPtr : objectManager.getObjectList()) {
-            if (!objPtr) continue;
-
             glPushMatrix();
-            glMultMatrixd(objPtr->m_mRotate);
             glTranslated(objPtr->center.x, objPtr->center.y, objPtr->center.z);
+            glMultMatrixd(objPtr->m_mRotate);
             objPtr->draw();
             glPopMatrix();
         }
 
+        //glTranslatef(cameraManager.getX(), cameraManager.getY(), cameraManager.getZ());
+        //glRotatef(cameraManager.getYaw(), 0.0f, 1.0f, 0.0f);
+        //glRotatef(cameraManager.getPitch(), 1.0f, 0.0f, 0.0f);
+        
         glPopMatrix();
     }
 };

@@ -10,6 +10,7 @@
 #include "../object/Floor.cpp"
 #include "../object/Wall.cpp"
 #include "../object/Cannon.cpp"
+#include "../object/TransWall.cpp"
 
 class ObjectManager {
 private:
@@ -23,6 +24,7 @@ public:
     const ObjectList& getObjectList() const {
         return objectList;
     }
+
 
     void init(const std::vector<ObjectSpec>& objectSpecs) {
         objectList.reset();
@@ -43,6 +45,9 @@ public:
             object = std::move(floor);
         } else if (objectSpec.objectName == "Wall") {
             auto wall = std::make_unique<Wall>(objectSpec);
+            object = std::move(wall);
+        } else if (objectSpec.objectName == "TransWall") {
+            auto wall = std::make_unique<TransWall>(objectSpec);
             object = std::move(wall);
         } else if (objectSpec.objectName == "Cannon") {
             auto cannon = std::make_unique<Cannon>(objectSpec);

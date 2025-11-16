@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "Object.cpp"
 #include "ObjectSpec.cpp"
 
@@ -8,13 +10,13 @@ class Sphere : public Object
 public:
     double radius;
 
-    Sphere(ObjectSpec objectSpec) {
+    Sphere(const ObjectSpec& objectSpec) {
         setColor(objectSpec.rgb);
         setCenter(objectSpec.center);
         setSize(objectSpec.size);
         radius = size.x;
         setVelocity(objectSpec.velocity);
-        accel = {0, -0.098, 0};
+        accel = {0.0, -9.8, 0.0};
 
         mass = std::pow(radius, 3) * (4.0/3.0) * 3.14;
     }

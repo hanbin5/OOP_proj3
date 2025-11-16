@@ -119,17 +119,14 @@ public :
             const double direction = (dx >= 0.0) ? 1.0 : -1.0;
             obj.center.x = center.x + direction * (halfX + radius);
             obj.velocity.x = -obj.velocity.x * restitution;
-            obj.accel.x = 0.0;
         } else if (axis == 1) {
             const double direction = (dy >= 0.0) ? 1.0 : -1.0;
             obj.center.y = center.y + direction * (halfY + radius);
             obj.velocity.y = -obj.velocity.y * restitution;
-            obj.accel.y = 0.0;
         } else {
             const double direction = (dz >= 0.0) ? 1.0 : -1.0;
             obj.center.z = center.z + direction * (halfZ + radius);
             obj.velocity.z = -obj.velocity.z * restitution;
-            obj.accel.z = 0.0;
         }
     }
 };

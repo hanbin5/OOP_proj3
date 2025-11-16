@@ -1,184 +1,141 @@
 #pragma once
 
-#include <algorithm>
 #include <cmath>
-#include <cctype>
 
+#include <GLUT/glut.h>
+
+#include "ObjectManager.cpp"
 #include "../object/Cannon.cpp"
-#include "RenderManager.cpp"
+#include "../object/TransWall.cpp"
+
+#include "../math/Rotate.cpp"
 
 class CannonManager {
 public:
-    explicit CannonManager(Cannon& cannonRef) {
-        setCannon(cannonRef);
-    }
+    void init(ObjectManager* objManager) {
+        objectManager = objManager;
+        cannon = findCannon();
 
-    void setCannon(Cannon& cannonRef) {
-        cannon = &cannonRef;
-        syncOrbitFromCannon();
-    }
-
-    void onKeyboard(unsigned char key, bool pressed) {
-        const unsigned char lower = static_cast<unsigned char>(std::tolower(key));
-        switch (lower) {
-            case 'a': input.left = pressed; break;
-            case 'd': input.right = pressed; break;
-            case 'w': input.up = pressed; break;
-            case 's': input.down = pressed; break;
-            default: break;
+        ObjectSpec spec{};
+        spec.objectName = "TransWall";
+        spec.rgb = {0.6, 0.2, 0.2};
+        spec.center = cannon->center;
+        spec.size = {0.1, 0.1, 40.0};
+        auto red_line = objectManager->makeObject(spec);
+        redLine = dynamic_cast<TransWall*>(red_line.get());
+        objectManager->getObjectList().push(std::move(red_line));
+        if (redLine) {
+            postMultiplyTranslate(redLine->m_mRotate,
+                                  redLineLocalOffset.x,
+                                  redLineLocalOffset.y,
+                                  redLineLocalOffset.z);
         }
+
     }
 
-    void update(float deltaTime) {
+    Cannon* findCannon() {
+        if (!objectManager) return nullptr;
+        for (auto& objPtr : objectManager->getObjectList()) {
+            if (!objPtr) continue;
+            if (auto cannonPtr = dynamic_cast<Cannon*>(objPtr.get())) {
+                return cannonPtr;
+            }
+        }
+        return nullptr;
+    }
+
+    void rotateUp() {
         if (!cannon) return;
-        integrateInputs(deltaTime);
-        placeCannonOnHemisphere();
-        updateCannonDirection();
-        updateCamera();
+        postMultiplyPitch(cannon->m_mRotate, 1);
+        cannon->setDirection();
+        rotateRedLineAroundOffset(0.0, 1.0);
+        syncRedLineCenter();
+    }
+    void rotateDown() {
+        if (!cannon) return;
+        postMultiplyPitch(cannon->m_mRotate, -1);
+        cannon->setDirection();
+        rotateRedLineAroundOffset(0.0, -1.0);
+        syncRedLineCenter();
+    }
+    void rotateLeft() {
+        if (!cannon) return;
+        postMultiplyYaw(cannon->m_mRotate, -1);
+        cannon->setDirection();
+        rotateRedLineAroundOffset(-1.0, 0.0);
+        syncRedLineCenter();
+    }
+    void rotateRight() {
+        if (!cannon) return;
+        postMultiplyYaw(cannon->m_mRotate, 1);
+        cannon->setDirection();
+        rotateRedLineAroundOffset(1.0, 0.0);
+        syncRedLineCenter();
+    }
+    
+    void moveForward() {
+        if (!cannon) return;
+        cannon->center.x += 1;
+        syncRedLineCenter();
+    }
+    void moveBackward() {
+        if (!cannon) return;
+        cannon->center.x -= 1;
+        syncRedLineCenter();
+    }
+    void moveLeft() {
+        if (!cannon) return;
+        cannon->center.z += 1;
+        syncRedLineCenter();
+    }
+    void moveRight() {
+        if (!cannon) return;
+        cannon->center.z -= 1;
+        syncRedLineCenter();
     }
 
-    const CameraState& getCamera() const {
-        return camera;
+    void fire() {
+        if (!objectManager || !cannon) return;
+
+        constexpr double projectileSpeed = 30.0;
+        ObjectSpec spec{};
+        spec.objectName = "Sphere";
+        spec.rgb = {0.8, 0.2, 0.2};
+        spec.center = cannon->center;
+        spec.size = {0.5, 0.5, 0.5};
+        const Vec3 direction = cannon->getDirection();
+        spec.velocity = {
+            direction.x * projectileSpeed,
+            direction.y * projectileSpeed,
+            direction.z * projectileSpeed
+        };
+
+        auto projectile = objectManager->makeObject(spec);
+        objectManager->getObjectList().push(std::move(projectile));
     }
+
+    double getX() { return cannon->center.x; }
+    double getY() { return cannon->center.y; }
+    double getZ() { return cannon->center.z; }
+    double getYaw() { return 0; }
+    double getPitch() { return -80.0; }
 
 private:
-    struct OrbitState {
-        double azimuthDeg = 180.0;   // rotation around Y axis
-        double elevationDeg = 30.0;  // 0 = equator, 90 = pole
-    };
-
-    struct InputState {
-        bool left = false;
-        bool right = false;
-        bool up = false;
-        bool down = false;
-    };
-
-    Cannon* cannon = nullptr;
-    CameraState camera{};
-    OrbitState orbit{};
-    InputState input{};
-
-    const Vec3 orbitCenter{0.0, 0.0, 0.0};
-    const double orbitRadius = 35.0;
-    const float cameraYOffset = 3.0f;
-    const float azimuthSpeed = 60.0f;   // degrees per second
-    const float elevationSpeed = 45.0f; // degrees per second
-    const float minElevation = 0.0f;
-    const float maxElevation = 89.0f;   // keep just below the pole to avoid gimbal lock
-
-    void syncOrbitFromCannon() {
-        if (!cannon) return;
-        const Vec3 offset{
-            cannon->center.x - orbitCenter.x,
-            cannon->center.y - orbitCenter.y,
-            cannon->center.z - orbitCenter.z
-        };
-        const double length = vectorLength(offset);
-        if (length >= 1e-6) {
-            orbit.azimuthDeg = radiansToDegrees(std::atan2(offset.x, offset.z));
-            const double normalizedY = std::clamp(offset.y / orbitRadius, -1.0, 1.0);
-            orbit.elevationDeg = std::clamp(radiansToDegrees(std::asin(normalizedY)),
-                                            static_cast<double>(minElevation),
-                                            static_cast<double>(maxElevation));
-        } else {
-            orbit.azimuthDeg = 0.0;
-            orbit.elevationDeg = minElevation;
-        }
-        placeCannonOnHemisphere();
-        updateCannonDirection();
-        updateCamera();
+    void rotateRedLineAroundOffset(double yawDeg, double pitchDeg) {
+        if (!redLine) return;
+        postMultiplyRotateAroundOffset(redLine->m_mRotate,
+                                       redLineLocalOffset,
+                                       yawDeg,
+                                       pitchDeg);
     }
 
-    void integrateInputs(float deltaTime) {
-        const float yawAxis = axisValue(input.left, input.right);
-        const float elevAxis = axisValue(input.up, input.down);
-
-        orbit.azimuthDeg += yawAxis * azimuthSpeed * deltaTime;
-        orbit.azimuthDeg = wrapDegrees(orbit.azimuthDeg);
-
-        orbit.elevationDeg = std::clamp(
-            orbit.elevationDeg + elevAxis * elevationSpeed * deltaTime,
-            static_cast<double>(minElevation),
-            static_cast<double>(maxElevation)
-        );
+    void syncRedLineCenter() {
+        if (!redLine || !cannon) return;
+        redLine->center = cannon->center;
     }
 
-    void placeCannonOnHemisphere() {
-        if (!cannon) return;
-        const double yawRad = degreesToRadians(orbit.azimuthDeg);
-        const double elevRad = degreesToRadians(orbit.elevationDeg);
-        const double cosElev = std::cos(elevRad);
-        const double sinElev = std::sin(elevRad);
-
-        cannon->center.x = orbitCenter.x + orbitRadius * cosElev * std::sin(yawRad);
-        cannon->center.z = orbitCenter.z + orbitRadius * cosElev * std::cos(yawRad);
-        cannon->center.y = orbitCenter.y + orbitRadius * sinElev;
-
-        cannon->velocity = {0.0, 0.0, 0.0};
-        cannon->accel = {0.0, 0.0, 0.0};
-    }
-
-    void updateCannonDirection() {
-        if (!cannon) return;
-        Vec3 toCenter{
-            orbitCenter.x - cannon->center.x,
-            orbitCenter.y - cannon->center.y,
-            orbitCenter.z - cannon->center.z
-        };
-        const double length = vectorLength(toCenter);
-        if (length < 1e-6) {
-            cannon->setDirection({0.0, 0.0, -1.0});
-            return;
-        }
-        const double inv = 1.0 / length;
-        cannon->setDirection({
-            toCenter.x * inv,
-            toCenter.y * inv,
-            toCenter.z * inv
-        });
-    }
-
-    void updateCamera() {
-        if (!cannon) return;
-        camera.x = static_cast<float>(cannon->center.x);
-        camera.y = static_cast<float>(cannon->center.y + cameraYOffset);
-        camera.z = static_cast<float>(cannon->center.z);
-
-        const Vec3 viewDir{
-            orbitCenter.x - camera.x,
-            orbitCenter.y - camera.y,
-            orbitCenter.z - camera.z
-        };
-        const double len = vectorLength(viewDir);
-        if (len < 1e-6) return;
-        const double inv = 1.0 / len;
-        const double ny = std::clamp(viewDir.y * inv, -1.0, 1.0);
-
-        camera.pitch = radiansToDegrees(std::asin(ny));
-        camera.yaw = radiansToDegrees(std::atan2(viewDir.x, viewDir.z));
-    }
-
-    static float axisValue(bool positive, bool negative) {
-        if (positive == negative) return 0.0f;
-        return positive ? 1.0f : -1.0f;
-    }
-
-    static double vectorLength(const Vec3& v) {
-        return std::sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
-    }
-
-    static double degreesToRadians(double degrees) {
-        return degrees * M_PI / 180.0;
-    }
-
-    static double radiansToDegrees(double radians) {
-        return radians * 180.0 / M_PI;
-    }
-
-    static double wrapDegrees(double degrees) {
-        const double wrapped = std::fmod(degrees, 360.0);
-        if (wrapped < 0.0) return wrapped + 360.0;
-        return wrapped;
-    }
+    ObjectManager* objectManager;
+    Cannon* cannon;
+    TransWall* redLine = nullptr;
+    const Vec3 redLineLocalOffset{0.0, 0.0, 20.0};
 };
