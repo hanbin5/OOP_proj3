@@ -8,5 +8,6 @@ struct ObjectSpec {
     std::string objectName;
     Vec3 rgb;
     Vec3 center;
+    Vec3 size;
     Vec3 velocity;
 };

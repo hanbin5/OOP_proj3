@@ -14,6 +14,7 @@ public:
     Vec3 color;
     Vec3 velocity;
     Vec3 accel;
+    Vec3 size;
     double mass;
 
     virtual ~Object() = default;
@@ -31,12 +32,23 @@ public:
     void setColor(double r, double g, double b) {
         color = {r, g, b};
     }
+    void setColor(Vec3 rgb) {
+        color = rgb;
+    }
 
-    void setCenter(Vec3& new_loc) {
-        center.x = new_loc.x; center.y = new_loc.y; center.z = new_loc.z;
+    void setCenter(Vec3 new_loc) {
+        center = new_loc;
     }
     void setCenter(double x, double y, double z) {
         center.x = x; center.y = y; center.z = z;
+    }
+
+    void setSize(Vec3 new_size) {
+        size = new_size;
+    }
+    
+    void setVelocity(Vec3 new_velocity) {
+        velocity = new_velocity;
     }
 
     void acc() {
@@ -45,7 +57,7 @@ public:
 
     virtual bool hasIntersected(Object& obj) const = 0;
 
-    void hitBy(Object& obj) {
+    virtual void hitBy(Object& obj) {
         if (&obj == this) return;
         if (!hasIntersected(obj)) return;
 

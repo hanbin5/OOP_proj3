@@ -1,24 +1,34 @@
 #pragma once
 
 #include "Object.cpp"
+#include "ObjectSpec.cpp"
 
-class CFloor : public Object
-{
+class Cannon : public Object {
 public:
-    float width, height, depth;
     GLfloat Verts[8][3];
 
-    CFloor(float w=500, float h=1, float d=500) {
-        width=w; height=h; depth=d;
-        setColor(0.0, 0.5, 1.0);
+private:
+    Vec3 direction{0.0, 0.0, 1.0};
+
+public:
+
+    Cannon(ObjectSpec objectSpec) {
+        setColor(objectSpec.rgb);
+        setCenter(objectSpec.center);
+        setVerts(objectSpec.size);
+        setVelocity(objectSpec.velocity);
+    }
+
+    void setVerts(Vec3 new_size) {
+        setSize(new_size);
 
         int i,j;
         float coef;
         for (i=0;i<8;i++) {
             for (j=0;j<3;j++) {
-                if (j==0) coef=w/2.0;
-                if (j==1) coef=h/2.0;
-                if (j==2) coef=d/2.0;
+                if (j==0) coef=new_size.x/2.0;
+                if (j==1) coef=new_size.y/2.0;
+                if (j==2) coef=new_size.z/2.0;
                 Verts[i][j]=coef*BoxVerts[i][j];
             }
         }
@@ -48,15 +58,18 @@ public:
     }
 
     bool hasIntersected(Object& obj) const override {
-        if (obj.center.y <= 0) return true;
         return false;
     }
 
-    void hitBy(Object& obj) {
-        if (!hasIntersected(obj)) return;
+    void hitBy(Object& obj) override {
+        
+    }
 
-        obj.center.y = 0;
-        obj.velocity.y = 0;
-        obj.accel.y = 0;
+    const Vec3& getDirection() const {
+        return direction;
+    }
+
+    void setDirection(const Vec3& newDirection) {
+        direction = newDirection;
     }
 };

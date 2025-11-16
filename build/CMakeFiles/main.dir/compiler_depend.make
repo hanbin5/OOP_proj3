@@ -788,12 +788,14 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wchar.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h \
   /Users/hanbinftr55/Coding/oop_proj3/src/math/Vec3.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/object/CFloor.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/object/CSphere.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/object/CWall.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/object/Cannon.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/object/Floor.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/object/Object.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/object/ObjectList.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/object/ObjectSpec.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/object/Sphere.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/object/Wall.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/CannonManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/FileManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/GameManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/ObjectManager.cpp \
@@ -808,19 +810,25 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 
 /Users/hanbinftr55/Coding/oop_proj3/src/manager/RenderManager.cpp:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_null_pointer.h:
-
-/Users/hanbinftr55/Coding/oop_proj3/src/manager/PhysicsManager.cpp:
-
 /Users/hanbinftr55/Coding/oop_proj3/src/manager/GameManager.cpp:
 
 /Users/hanbinftr55/Coding/oop_proj3/src/manager/FileManager.cpp:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/object/Wall.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/tuple_indices.h:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/object/Sphere.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fd_set.h:
 
 /Users/hanbinftr55/Coding/oop_proj3/src/object/ObjectSpec.cpp:
 
 /Users/hanbinftr55/Coding/oop_proj3/src/object/Object.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/object/Floor.cpp:
 
 /Users/hanbinftr55/Coding/oop_proj3/src/math/Vec3.cpp:
 
@@ -1176,8 +1184,6 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/make_const_lvalue_ref.h:
 
-/Users/hanbinftr55/Coding/oop_proj3/src/object/CSphere.cpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_unsigned_integer.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_trivially_relocatable.h:
@@ -1227,6 +1233,10 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/regular.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_pod.h:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/manager/PhysicsManager.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_null_pointer.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_nothrow_destructible.h:
 
@@ -1353,8 +1363,6 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/tuple_types.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/tuple_like_no_subrange.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tuple/tuple_indices.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/forward.h:
 
@@ -1650,8 +1658,6 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/minmax.h:
 
-/Users/hanbinftr55/Coding/oop_proj3/src/object/CWall.cpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/istreambuf_iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/empty.h:
@@ -1735,6 +1741,8 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/unary_function.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/runetype.h:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/object/Cannon.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h:
 
@@ -1852,8 +1860,6 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__configuration/compiler.h:
 
-/Users/hanbinftr55/Coding/oop_proj3/src/object/CFloor.cpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__concepts/derived_from.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__type_traits/is_scalar.h:
@@ -1925,6 +1931,8 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_printf.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctype.h:
+
+/Users/hanbinftr55/Coding/oop_proj3/src/manager/CannonManager.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__bit/bit_log2.h:
 
@@ -2251,8 +2259,6 @@ CMakeFiles/main.dir/src/main.cpp.o: /Users/hanbinftr55/Coding/oop_proj3/src/main
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_locale_t.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/arm/limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/search.h:
 

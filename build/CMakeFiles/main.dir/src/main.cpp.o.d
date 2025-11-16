@@ -764,9 +764,10 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/Object.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/../math/Vec3.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/ObjectSpec.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/CSphere.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/CFloor.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/CWall.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/Sphere.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/Floor.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/Wall.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/../object/Cannon.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/PhysicsManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/FileManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/TimeManager.cpp \
@@ -799,4 +800,5 @@ CMakeFiles/main.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/perfect_forward.h \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/WindowManager.cpp \
   /Users/hanbinftr55/Coding/oop_proj3/src/manager/RenderManager.cpp \
-  /Users/hanbinftr55/Coding/oop_proj3/src/manager/StageManager.cpp
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/StageManager.cpp \
+  /Users/hanbinftr55/Coding/oop_proj3/src/manager/CannonManager.cpp

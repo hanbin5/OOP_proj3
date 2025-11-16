@@ -14,6 +14,10 @@ public:
         for (const auto& objPtr : objectList) {
             if (!objPtr) continue;
 
+            if (auto sphere = dynamic_cast<Sphere*>(objPtr.get())) {
+                sphere->accel.y = -0.98;
+            }
+
             // Semi-implicit Euler integration
             objPtr->velocity = objPtr->velocity + deltaTime * objPtr->accel;
             objPtr->center = objPtr->center + deltaTime * objPtr->velocity;

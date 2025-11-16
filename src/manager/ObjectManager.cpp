@@ -6,9 +6,10 @@
 
 #include "../object/ObjectList.cpp"
 #include "../object/ObjectSpec.cpp"
-#include "../object/CSphere.cpp"
-#include "../object/CFloor.cpp"
-#include "../object/CWall.cpp"
+#include "../object/Sphere.cpp"
+#include "../object/Floor.cpp"
+#include "../object/Wall.cpp"
+#include "../object/Cannon.cpp"
 
 class ObjectManager {
 private:
@@ -35,23 +36,17 @@ public:
         std::unique_ptr<Object> object;
 
         if (objectSpec.objectName == "Ship" || objectSpec.objectName == "Sphere") {
-            auto sphere = std::make_unique<CSphere>();
-            sphere->setColor(objectSpec.rgb.x, objectSpec.rgb.y, objectSpec.rgb.z);
-            sphere->setCenter(objectSpec.center.x, objectSpec.center.y, objectSpec.center.z);
-            sphere->velocity = objectSpec.velocity;
+            auto sphere = std::make_unique<Sphere>(objectSpec);
             object = std::move(sphere);
         } else if (objectSpec.objectName == "Floor") {
-            auto floor = std::make_unique<CFloor>();
-            floor->setColor(objectSpec.rgb.x, objectSpec.rgb.y, objectSpec.rgb.z);
-            floor->setCenter(objectSpec.center.x, objectSpec.center.y, objectSpec.center.z);
-            floor->velocity = objectSpec.velocity;
+            auto floor = std::make_unique<Floor>(objectSpec);
             object = std::move(floor);
         } else if (objectSpec.objectName == "Wall") {
-            auto wall = std::make_unique<CWall>();
-            wall->setColor(objectSpec.rgb.x, objectSpec.rgb.y, objectSpec.rgb.z);
-            wall->setCenter(objectSpec.center.x, objectSpec.center.y, objectSpec.center.z);
-            wall->velocity = objectSpec.velocity;
+            auto wall = std::make_unique<Wall>(objectSpec);
             object = std::move(wall);
+        } else if (objectSpec.objectName == "Cannon") {
+            auto cannon = std::make_unique<Cannon>(objectSpec);
+            object = std::move(cannon);
         } else {
             throw std::runtime_error("Unknown object type: " + objectSpec.objectName);
         }

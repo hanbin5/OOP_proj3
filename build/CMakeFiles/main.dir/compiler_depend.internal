@@ -789,12 +789,14 @@ CMakeFiles/main.dir/src/main.cpp.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wchar.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h
  /Users/hanbinftr55/Coding/oop_proj3/src/math/Vec3.cpp
- /Users/hanbinftr55/Coding/oop_proj3/src/object/CFloor.cpp
- /Users/hanbinftr55/Coding/oop_proj3/src/object/CSphere.cpp
- /Users/hanbinftr55/Coding/oop_proj3/src/object/CWall.cpp
+ /Users/hanbinftr55/Coding/oop_proj3/src/object/Cannon.cpp
+ /Users/hanbinftr55/Coding/oop_proj3/src/object/Floor.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/object/Object.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/object/ObjectList.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/object/ObjectSpec.cpp
+ /Users/hanbinftr55/Coding/oop_proj3/src/object/Sphere.cpp
+ /Users/hanbinftr55/Coding/oop_proj3/src/object/Wall.cpp
+ /Users/hanbinftr55/Coding/oop_proj3/src/manager/CannonManager.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/manager/FileManager.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/manager/GameManager.cpp
  /Users/hanbinftr55/Coding/oop_proj3/src/manager/ObjectManager.cpp

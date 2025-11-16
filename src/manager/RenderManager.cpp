@@ -27,6 +27,7 @@ struct CameraState {
 class RenderManager {
 private:
     CameraState camera;
+
 public:
     void setCameraDepth(float depth) {
         camera.z = depth;
